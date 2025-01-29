@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useRouter } from 'next/navigation'
+import CarSVG from './svgs/car';
 
 export function SignUpForm({
   className,
@@ -32,10 +33,13 @@ export function SignUpForm({
     }
   
     try {
+      console.log(username, passwordFirst);
       const response = await axios.post('http://localhost:5000/api/signup', {
         username,
         password: passwordFirst
-      });
+      },{headers: {
+        'Content-Type': 'application/json' // Explicitly set header
+      }});
         router.push('/signin')
   
     } catch (err) {
@@ -121,11 +125,7 @@ export function SignUpForm({
             </div>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-            />
+            <CarSVG/>
           </div>
         </CardContent>
       </Card>

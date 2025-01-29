@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useRouter } from 'next/navigation'
+import CarSVG from './svgs/car';
 
 export function SignInForm({
   className,
@@ -36,6 +37,7 @@ export function SignInForm({
       if (token) {
         // Store token in localStorage
         localStorage.setItem('authToken', token);
+        localStorage.setItem('username', username);
   
         console.log('Login successful:', response.data);
         router.push('/')
@@ -113,11 +115,7 @@ export function SignInForm({
             </div>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-            />
+            <CarSVG/>
           </div>
         </CardContent>
       </Card>
