@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
-import { cn } from "@/lib/utils"
+import { API_URL, cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -26,7 +26,7 @@ export function SignInForm({
     setIsLoading(true);
   
     try {
-      const response = await axios.post('http://localhost:5000/api/signin', {
+      const response = await axios.post(`${API_URL}signin`, {
         username,
         password
       });

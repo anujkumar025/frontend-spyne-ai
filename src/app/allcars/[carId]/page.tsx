@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { API_URL } from "@/lib/utils";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -33,7 +34,7 @@ export default function CarsDetails({
       const fetchData = async () => {
         const carId = (await params).carId;
         try {
-          const response = await axios.get(`http://localhost:5000/api/cars/${carId}`, {
+          const response = await axios.get(`${API_URL}cars/${carId}`, {
             headers: {
               Authorization: `${token}`
             }
@@ -61,7 +62,7 @@ export default function CarsDetails({
         if (!confirmDelete) return;
     
         const response = await axios.delete(
-          `http://localhost:5000/api/cars/${carDetails._id}`,
+          `${API_URL}cars/${carDetails._id}`,
           {
             headers: {
               Authorization: `${token}`

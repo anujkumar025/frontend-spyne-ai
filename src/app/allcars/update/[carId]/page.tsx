@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from '@/components/ui/card';
 import { Label } from '@radix-ui/react-dropdown-menu';
+import { API_URL } from "@/lib/utils"
 
 interface Car {
   _id: string;
@@ -40,7 +41,7 @@ export default function UpdateCarPage({ params }: { params: { carId: string } })
       try {
         const { carId } = await params;
         const token = localStorage.getItem('authToken');
-        const response = await axios.get(`http://localhost:5000/api/cars/${carId}`, {
+        const response = await axios.get(`${API_URL}cars/${carId}`, {
           headers: {
             Authorization: `${token}`
           }
@@ -78,7 +79,7 @@ export default function UpdateCarPage({ params }: { params: { carId: string } })
         });
       }
 
-      await axios.put(`http://localhost:5000/api/cars/${carId}`, formPayload, {
+      await axios.put(`${URL}cars/${carId}`, formPayload, {
         headers: {
           Authorization: `${token}`,
           'Content-Type': 'multipart/form-data'

@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
+import { API_URL } from "@/lib/utils";
 
 type InputProps = {
   title: string;
@@ -66,7 +67,7 @@ export default function CreateProduct() {
       
         try {
           const token = localStorage.getItem('authToken');
-          const response = await axios.post("http://localhost:5000/api/createcars", formData, {
+          const response = await axios.post(`${API_URL}createcars`, formData, {
             headers: {
               Authorization: `${token}`,
               'Content-Type': 'multipart/form-data'

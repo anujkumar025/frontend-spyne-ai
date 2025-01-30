@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Card } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
+import { API_URL } from "@/lib/utils";
 
 // Define the car type
 type Car = {
@@ -26,7 +27,7 @@ export default function AllCars(){
 
     async function getAllCars(){
         const token = localStorage.getItem('authToken');
-        const response = await axios.get('http://localhost:5000/api/cars', {
+        const response = await axios.get(`${API_URL}cars`, {
             headers: {
               Authorization: `${token}`
             }
