@@ -39,13 +39,12 @@ export function SignInForm({
         localStorage.setItem('authToken', token);
         localStorage.setItem('username', username);
   
-        console.log('Login successful:', response.data);
+        // console.log('Login successful:', response.data);
         router.push('/')
       }
   
     } catch (err) {
-      // setError('Invalid username or password');
-      console.error('Login error:', err);
+      alert("Invalid username or password");
     } finally {
       setIsLoading(false);
     }
@@ -60,9 +59,6 @@ export function SignInForm({
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">Welcome back</h1>
-                <p className="text-balance text-muted-foreground">
-                  Login to your Acme Inc account
-                </p>
               </div>
               
               {error && (

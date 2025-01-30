@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useRouter } from 'next/navigation'
 import CarSVG from './svgs/car';
+import Link from 'next/link';
 
 export function SignUpForm({
   className,
@@ -26,14 +27,14 @@ export function SignUpForm({
     setError('');
     setIsLoading(true);
 
-    if(passwordFirst !== passwordSecond){
-        setError('Passwords do not match');
-        setIsLoading(false);
-        return;
-    }
-  
+    
     try {
-      console.log(username, passwordFirst);
+      if(passwordFirst !== passwordSecond){
+          alert('Passwords do not match');
+          setIsLoading(false);
+          return;
+      }
+      // console.log(username, passwordFirst);
       const response = await axios.post('http://localhost:5000/api/signup', {
         username,
         password: passwordFirst
@@ -43,8 +44,7 @@ export function SignUpForm({
         router.push('/signin')
   
     } catch (err) {
-      // setError('Invalid username or password');
-      console.error('Login error:', err);
+      alert("User already exist");
     } finally {
       setIsLoading(false);
     }
@@ -118,9 +118,9 @@ export function SignUpForm({
 
               <div className="text-center text-sm">
                 Already have an account?{" "}
-                <a href="/signin" className="underline underline-offset-4">
+                <Link href="/signin" className="underline underline-offset-4">
                   Sign In
-                </a>
+                </Link>
               </div>
             </div>
           </form>

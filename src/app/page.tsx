@@ -22,24 +22,46 @@ export default function Home() {
   }, []);
 
   return (
+    <div className="min-h-screen flex flex-col">
+      {/* Header Section */}
+      <header className="w-full px-4 sm:px-6 lg:px-8 py-4 border-b">
+        <div className="max-w-6xl mx-auto flex md:flex-row justify-around items-center gap-4">
+          <div className="flex items-center">
+            <Label className="text-lg font-semibold">Car Marketplace</Label>
+          </div>
+          <Header isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />
+        </div>
+      </header>
 
-    <div className="w-screen flex flex-col justify-center items-center">
-      <div className="w-1/3 flex justify-between h-[10vh]">
-        <div className="flex jusify-center items-center">
-          <Label>Name</Label>
+      {/* Main Content */}
+      <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-6xl mx-auto flex flex-col items-center justify-center gap-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-center">
+            Welcome to Car Marketplace
+          </h1>
+          
+          <div className="w-full max-w-md flex flex-col gap-6">
+            <Link href="/createproduct" className="w-full">
+              <Button 
+                size="lg" 
+                className="w-full md:w-auto px-8 py-4 text-lg transition-all hover:scale-105"
+              >
+                Create New Listing
+              </Button>
+            </Link>
+            
+            <Link href="/allcars" className="w-full">
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full md:w-auto px-8 py-4 text-lg transition-all hover:scale-105"
+              >
+                Browse Listings
+              </Button>
+            </Link>
+          </div>
         </div>
-        <div className="flex jusify-center items-center">
-          <Header isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>
-        </div>
-      </div>
-      <div className="w-1/3 flex flex-col items-center justify-center gap-10 bg-muted h-[90vh]">
-        <Link href="/createproduct">
-          <Button>Create Product</Button>
-        </Link>
-        <Link href='/allcars'>
-          <Button>List All Product</Button>
-        </Link>
-      </div>
+      </main>
     </div>
   );
 }
