@@ -11,5 +11,5 @@ export const handleLogout = () => {
   // Redirect user or update UI
 };
 
-export const API_URL = 'http://localhost:5000/api/';
-// export const API_URL = 'https://spyne-ai-7d9y.onrender.com/api/';
+// export const API_URL = 'http://localhost:5000/api/';
+export const API_URL = 'https://spyne-ai-7d9y.onrender.com/api/';
