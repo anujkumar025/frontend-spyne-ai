@@ -1,6 +1,5 @@
 "use client";
 
-// import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,6 +15,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { API_URL } from "@/lib/utils";
+import { useEffect } from "react";
 
 type InputProps = {
   title: string;
@@ -38,10 +38,24 @@ export default function CreateProduct() {
             company: "",
             dealer: "",
           },
-          images: new DataTransfer().files, // Initialize images with an empty FileList
+          images: undefined, // Initialize images with an empty FileList
         },
       });
+      // const [previews, setPreviews] = useState<string[]>([]);
       const router = useRouter();
+
+      useEffect(() => {
+        form.setValue("images", new DataTransfer().files);
+      }, []);
+
+      const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (files) {
+          // const urls = Array.from(files).map(file => URL.createObjectURL(file));
+          // setPreviews(urls);
+          form.setValue("images", files);
+        }
+      };
 
     async function onSubmit(data: InputProps) {
         const formData = new FormData();
@@ -79,7 +93,6 @@ export default function CreateProduct() {
           console.error("Error submitting form:", error);
         }
       }
-
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-background">
@@ -190,7 +203,7 @@ export default function CreateProduct() {
             <FormField
               control={form.control}
               name="images"
-              render={({ field: { onChange, ...rest } }) => (
+              render={({ field: {} }) => (
                 <FormItem>
                   <FormLabel className="font-semibold">Images</FormLabel>
                   <FormControl>
@@ -209,7 +222,7 @@ export default function CreateProduct() {
                           type="file"
                           multiple
                           accept="image/*"
-                          onChange={(e) => onChange(e.target.files)}
+                          onChange={(e) => {handleFileChange(e)}}
                           className="hidden"
                         />
                       </label>

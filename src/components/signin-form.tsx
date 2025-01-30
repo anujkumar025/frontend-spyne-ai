@@ -43,7 +43,8 @@ export function SignInForm({
         router.push('/')
       }
   
-    } catch (err) {
+    } catch (e) {
+      console.log(e);
       alert("Invalid username or password");
     } finally {
       setIsLoading(false);

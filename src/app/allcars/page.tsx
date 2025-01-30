@@ -88,7 +88,7 @@ export default function AllCars(){
                 {/* Header Section */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <h1 className="text-2xl font-bold tracking-tight">
-                    {localStorage.getItem('username')}'s Garage
+                    {localStorage.getItem('username')}&#39;s Garage
                     </h1>
                     <div className="w-full md:w-auto">
                     <Input
@@ -105,7 +105,7 @@ export default function AllCars(){
                     {hasSearchResults && (
                     <div className="space-y-4">
                         <h2 className="text-sm font-medium text-muted-foreground">
-                        Search results for "<span className="text-primary">{searchTerm}</span>"
+                        Search results for &#34;<span className="text-primary">{searchTerm}</span>&#34;
                         </h2>
                         <div className="grid gap-4">
                         {filteredCars.map((car) => (
@@ -153,7 +153,7 @@ export default function AllCars(){
                         <p className="text-muted-foreground font-medium">
                             No cars found matching
                         </p>
-                        <p className="text-primary font-semibold">"{searchTerm}"</p>
+                        <p className="text-primary font-semibold">&#34;{searchTerm}&#34;</p>
                         </div>
                     </div>
                     )}

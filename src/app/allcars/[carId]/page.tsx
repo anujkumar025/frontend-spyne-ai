@@ -110,16 +110,9 @@ export default function CarsDetails({
             </h1>
             <div className="flex gap-2 w-full sm:w-auto">
               <Button
-                variant="outline"
-                className="w-full sm:w-auto"
-                onClick={() => router.push(`/allcars/update/${carDetails?._id}`)}
-              >
-                Edit Listing
-              </Button>
-              <Button
                 variant="destructive"
                 className="w-full sm:w-auto bg-red-600 text-white hover:bg-red-700"
-                onClick={() => alert("Deleting...")}
+                onClick={() => handleDelete}
               >
                 Delete
               </Button>

@@ -35,7 +35,7 @@ export function SignUpForm({
           return;
       }
       // console.log(username, passwordFirst);
-      const response = await axios.post(`${API_URL}signup`, {
+      await axios.post(`${API_URL}signup`, {
         username,
         password: passwordFirst
       },{headers: {
@@ -44,6 +44,7 @@ export function SignUpForm({
         router.push('/signin')
   
     } catch (err) {
+      console.log(err);
       alert("User already exist");
     } finally {
       setIsLoading(false);
